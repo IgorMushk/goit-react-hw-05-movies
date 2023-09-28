@@ -27,8 +27,10 @@ const MovieDetails = () => {
 
   // console.log(dataMovie);
   // const {title, poster_path} = dataMovie;
+  //<p>${dataMovie.title}</p>
+  //<p>${dataMovie.poster_path}</p>
 
-  return (
+    return (
     <>
       <button to={backLocation} onClick={handleBackClick}>
         Back to movies
@@ -38,8 +40,6 @@ const MovieDetails = () => {
         <div>
           {dataMovie ? (
             <>
-              <p>${dataMovie.title}</p>
-              <p>${dataMovie.poster_path}</p>
               <img
                 src={`https://image.tmdb.org/t/p/w300${dataMovie.poster_path}`}
                 alt={`poster of ${dataMovie.title} movie`}
