@@ -20,6 +20,7 @@ const MovieDetails = () => {
         console.log('(dataMovie >>', dataMovie);
       })
       .catch(err => console.log(err));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const handleBackClick = () => {
