@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { fetchMovies } from 'services/moviesAPI';
+import { MovieContainer, MovieList, MovieSubTitle, MovieTitle, SpanTag } from './MovieDetaile.styled';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -30,21 +31,41 @@ const MovieDetails = () => {
   //<p>${dataMovie.title}</p>
   //<p>${dataMovie.poster_path}</p>
 
-    return (
+  return (
     <>
       <button to={backLocation} onClick={handleBackClick}>
-        Back to movies
+         Go back
       </button>
 
       <div>
         <div>
           {dataMovie ? (
-            <>
+            <MovieContainer>
               <img
                 src={`https://image.tmdb.org/t/p/w300${dataMovie.poster_path}`}
                 alt={`poster of ${dataMovie.title} movie`}
               ></img>
-            </>
+              <div>
+                <MovieTitle>{dataMovie.title}</MovieTitle>
+                <MovieList>
+                  <li>
+                    <span>
+                      User score: {`${Math.ceil(dataMovie.vote_average * 10)}%`}
+                    </span>
+                  </li>
+                  <li>
+                    <MovieSubTitle>Overview:</MovieSubTitle>
+                  </li>
+                  <li>
+                    <p> {dataMovie.overview} </p>
+                  </li>
+                  <li>
+                  <MovieSubTitle>Genres:</MovieSubTitle>
+                  </li>
+                  <li>{dataMovie.genres.map(({name}) => ( <SpanTag key={name}> {name}  </SpanTag>)) }</li>
+                </MovieList>
+              </div>
+            </MovieContainer>
           ) : (
             <p>Loading...</p>
           )}
