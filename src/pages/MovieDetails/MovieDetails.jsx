@@ -1,43 +1,70 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { fetchMovies } from 'services/moviesAPI';
 
 const MovieDetails = () => {
-  const [dataMovie, setDataMovie] = useState(null);
   const { id } = useParams();
+  const [dataMovie, setDataMovie] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
 
-  const backLinkHref = location.state?.from ?? '/movies';
+  const backLocation = location.state?.from ?? '/movies';
   //console.log('MovieDetails >>>',location);
 
-  const handleBackClick = () => {
-    navigate(backLinkHref);
-  };
-
   useEffect(() => {
-    //setLoading(true);
-    const fetchMovieDetailes = async () => {
-      try {
-        const data = await fetchMovies(`/movie/${id}`);
+    fetchMovies(`/movie/${id}`)
+      .then(data => {
         setDataMovie(data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchMovieDetailes();
+        console.log('(data >>', data.title);
+        console.log('(dataMovie >>', dataMovie);
+      })
+      .catch(err => console.log(err));
   }, [id]);
 
-  console.log(dataMovie);
+  const handleBackClick = () => {
+    navigate(backLocation);
+  };
+
+  // console.log(dataMovie);
+  // const {title, poster_path} = dataMovie;
 
   return (
     <>
-      <button to={backLinkHref} onClick={handleBackClick}>
+      <button to={backLocation} onClick={handleBackClick}>
         Back to movies
       </button>
-      <div>MovieDetails</div>
+
+      <div>
+        <div>
+          {dataMovie ? (
+            <>
+              <p>${dataMovie.title}</p>
+              <p>${dataMovie.poster_path}</p>
+              <img
+                src={`https://image.tmdb.org/t/p/w300${dataMovie.poster_path}`}
+                alt={`poster of ${dataMovie.title} movie`}
+              ></img>
+            </>
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>
+      </div>
     </>
   );
 };
 
 export default MovieDetails;
+
+// useEffect(() => {
+//     const fetchMovieDetailes = async () => {
+//       try {
+//         const data = await fetchMovies(`/movie/${id}`);
+//         setDataMovie(data);
+//         console.log('(dataMovie >>',dataMovie);
+//       } catch (err) {
+//         console.log(err);
+//       }
+//     };
+//     fetchMovieDetailes();
+//   }, [id]);
