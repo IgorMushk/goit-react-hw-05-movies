@@ -7,13 +7,13 @@ import Review from './Review/Review';
 import styled from 'styled-components';
 import { Container, Header, Nav } from './App.styled';
 
-const StyledNavLink = styled(NavLink)`
+const StyledLink = styled(NavLink)`
   text-decoration: none;
-  color: #eeeeee;
-  font-weight: 500;
+  color: #bdbdbd;
+  font-weight: 600;
 
   &:hover {
-    color: #bdbdbd;
+    color: #eeeeee;
   }
 
   &.active {
@@ -35,12 +35,12 @@ export const App = () => {
                 height="20"
               ></img>
             </Link>
-            <StyledNavLink to="/">Home</StyledNavLink>
-            <StyledNavLink to="/movies">Movies</StyledNavLink>
+            <StyledLink to="/">Home</StyledLink>
+            <StyledLink to="/movies">Movies</StyledLink>
           </Nav>
         </Container>
       </Header>
-      
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
