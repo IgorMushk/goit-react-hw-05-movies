@@ -10,7 +10,7 @@ const Home = () => {
     //setLoading(true);
     const fetchTrendingMovies = async () => {
         try {
-            const data = await fetchMovies('/trending//movie/day?language=en-US');
+            const data = await fetchMovies('/trending/movie/day?language=en-US');
             setTrendingMovies(data.results);
         } catch (err) {
             console.log(err)
@@ -18,7 +18,7 @@ const Home = () => {
     }
     fetchTrendingMovies();
   }, []);
-  return <MoviesList movies={trendingMovies} />;;
+  return <MoviesList movies={trendingMovies} />;
 };
 
 export default Home;
