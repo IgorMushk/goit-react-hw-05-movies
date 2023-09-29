@@ -3,7 +3,7 @@ import MovieDetails from 'pages/MovieDetails/MovieDetails';
 import Movies from 'pages/Movies/Movies';
 import { Link, NavLink, Route, Routes } from 'react-router-dom';
 import Cast from './Cast/Cast';
-import Review from './Review/Review';
+import Reviews from './Reviews/Reviews';
 import styled from 'styled-components';
 import { Container, Header, Nav } from './App.styled';
 
@@ -46,7 +46,7 @@ export const App = () => {
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:id" element={<MovieDetails />}>
           <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Review />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
