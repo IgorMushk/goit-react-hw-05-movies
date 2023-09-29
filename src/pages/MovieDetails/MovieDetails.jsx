@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useLocation, useParams, Link, Outlet } from 'react-router-dom';
 import { fetchMovies } from 'services/moviesAPI';
 import {
@@ -124,9 +124,11 @@ const MovieDetails = () => {
                 </AddInfList>
                 {/* <hr></hr> */}
               </AddInfWrapper>
-              <Outlet />
+              <Suspense fallback={<div>Loading subpage...</div>}>
+                <Outlet />
+              </Suspense>
             </>
-          ) : (
+          ) : (     
             <p>Loading...</p>
           )}
         </div>
