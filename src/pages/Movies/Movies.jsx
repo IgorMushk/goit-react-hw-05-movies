@@ -11,7 +11,7 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
 
-  console.log('query >>', query);
+  //console.log('query >>', query);
 
   useEffect(() => {
     if (query) {
@@ -25,20 +25,20 @@ const Movies = () => {
     try {
       const data = await fetchMovies(`/search/movie?query=${query}`);
       setDataMovies(data.results);
-      console.log('data >>', data.results);
-      console.log('dataMovies >>', dataMovies);
+      //console.log('data >>', data.results);
+      //console.log('dataMovies >>', dataMovies);
     } catch (err) {
       console.log(err);
     }
   };
 
   const handleInputChange = evt => {
-    console.log(evt.target.value);
+    //console.log(evt.target.value);
     setInputValue(evt.target.value);
   };
 
   const handleSearchClick = () => {
-    console.log('handleSearchClick >>', inputValue);
+    //console.log('handleSearchClick >>', inputValue);
     if (!inputValue) {
       setSearchParams({});
       setDataMovies([]);
@@ -61,10 +61,6 @@ const Movies = () => {
           Search
         </ButtonSubmit>
       </form>
-      {/* {dataMovies.length > 0
-       ?  (<MoviesList movies={dataMovies}/>)
-       : (<h2>Sorry we didn't find any movie</h2>)
-    } */}
     <MoviesList movies={dataMovies}/>
     </FormWrapper>
   );
@@ -72,3 +68,8 @@ const Movies = () => {
 
 export default Movies;
 //  <div>Movies</div>
+
+//   {/* {dataMovies.length > 0
+//        ?  (<MoviesList movies={dataMovies}/>)
+//        : (<h2>Sorry we didn't find any movie</h2>)
+//     } */}

@@ -6,7 +6,7 @@ import { List, } from './MoviesList.styled';
 const MoviesList = ({ movies }) => {
   const location = useLocation();
   //console.log(location);
-  console.log('MoviesList - movies >>>', movies);
+  //console.log('MoviesList - movies >>>', movies);
 
   return  (
     <>
