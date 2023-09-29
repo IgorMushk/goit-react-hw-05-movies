@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useParams, Link } from 'react-router-dom';
+import { useLocation, useParams, Link, Outlet } from 'react-router-dom';
 import { fetchMovies } from 'services/moviesAPI';
 import {
+  AddInfList,
+  AddInfWrapper,
+  AdditionalTitle,
   MovieContainer,
   MovieList,
   MovieSubTitle,
@@ -23,7 +26,6 @@ const StyledLink = styled(Link)`
   border-radius: 4px;
   padding: 8px 0px;
   transition: all 250ms linear;
-  
 
   &:hover {
     color: white;
@@ -72,36 +74,57 @@ const MovieDetails = () => {
       <div>
         <div>
           {dataMovie ? (
-            <MovieContainer>
-              <img
-                src={`https://image.tmdb.org/t/p/w300${dataMovie.poster_path}`}
-                alt={`poster of ${dataMovie.title} movie`}
-              ></img>
-              <div>
-                <MovieTitle>{dataMovie.title}</MovieTitle>
-                <MovieList>
+            <>
+              <MovieContainer>
+                <img
+                  src={`https://image.tmdb.org/t/p/w300${dataMovie.poster_path}`}
+                  alt={`poster of ${dataMovie.title} movie`}
+                ></img>
+                <div>
+                  <MovieTitle>{dataMovie.title}</MovieTitle>
+                  <MovieList>
+                    <li>
+                      <span>
+                        User score:{' '}
+                        {`${Math.ceil(dataMovie.vote_average * 10)}%`}
+                      </span>
+                    </li>
+                    <li>
+                      <MovieSubTitle>Overview:</MovieSubTitle>
+                    </li>
+                    <li>
+                      <p> {dataMovie.overview} </p>
+                    </li>
+                    <li>
+                      <MovieSubTitle>Genres:</MovieSubTitle>
+                    </li>
+                    <li>
+                      {dataMovie.genres.map(({ name }) => (
+                        <SpanTag key={name}> {name} </SpanTag>
+                      ))}
+                    </li>
+                  </MovieList>
+                </div>
+              </MovieContainer>
+              <AddInfWrapper>
+                {/* <hr></hr> */}
+                <AdditionalTitle>Additional information</AdditionalTitle>
+                <AddInfList>
                   <li>
-                    <span>
-                      User score: {`${Math.ceil(dataMovie.vote_average * 10)}%`}
-                    </span>
+                    <Link to="cast" state={location.state}>
+                      Cast
+                    </Link>
                   </li>
                   <li>
-                    <MovieSubTitle>Overview:</MovieSubTitle>
+                    <Link to="reviews" state={location.state}>
+                      Reviews
+                    </Link>
                   </li>
-                  <li>
-                    <p> {dataMovie.overview} </p>
-                  </li>
-                  <li>
-                    <MovieSubTitle>Genres:</MovieSubTitle>
-                  </li>
-                  <li>
-                    {dataMovie.genres.map(({ name }) => (
-                      <SpanTag key={name}> {name} </SpanTag>
-                    ))}
-                  </li>
-                </MovieList>
-              </div>
-            </MovieContainer>
+                </AddInfList>
+                {/* <hr></hr> */}
+              </AddInfWrapper>
+              <Outlet />
+            </>
           ) : (
             <p>Loading...</p>
           )}

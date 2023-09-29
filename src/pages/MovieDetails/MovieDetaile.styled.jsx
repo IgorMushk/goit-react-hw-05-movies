@@ -35,4 +35,42 @@ const MovieSubTitle = styled.h2`
   margin-bottom: 10px;
 `;
 
-export { MovieContainer, SpanTag, MovieList, MovieTitle, MovieSubTitle };
+const AdditionalTitle = styled.p`
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+`;
+
+const AddInfWrapper = styled.div`
+  margin-top: 5px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(144, 164, 174, 0.3);
+  border-top: 1px solid rgba(144, 164, 174, 0.3);
+`;
+
+const AddInfList = styled.ul`
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 5px;
+
+  & a:hover {
+    color: #ff6d00;
+`;
+
+export {
+  MovieContainer,
+  SpanTag,
+  MovieList,
+  MovieTitle,
+  MovieSubTitle,
+  AdditionalTitle,
+  AddInfWrapper,
+  AddInfList,
+};
