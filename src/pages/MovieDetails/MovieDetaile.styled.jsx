@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const MovieContainer = styled.div`
   margin-left: 10px;
   margin-top: 10px;
+  margin-bottom: 15px;
   display: flex;
   gap: 20px;
 `;
@@ -50,6 +51,11 @@ const AddInfWrapper = styled.div`
   border-top: 1px solid rgba(144, 164, 174, 0.3);
 `;
 
+const MovieImg = styled.img`
+border-radius: 4px;
+box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.25);
+`;
+
 const AddInfList = styled.ul`
   list-style: none;
   display: flex;
@@ -64,6 +70,7 @@ const AddInfList = styled.ul`
     color: #ff6d00;
 `;
 
+
 export {
   MovieContainer,
   SpanTag,
@@ -73,4 +80,5 @@ export {
   AdditionalTitle,
   AddInfWrapper,
   AddInfList,
+  MovieImg,
 };

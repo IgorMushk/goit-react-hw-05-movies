@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchMovies } from 'services/moviesAPI';
+import { CastImg, CastList } from './Cast.styled';
 
 const Cast = () => {
   const{id} = useParams();
@@ -20,24 +21,24 @@ const Cast = () => {
 
   return (
       
-    <ul> 
+    <CastList> 
       {cast.map(item => {
         return (
           <li key={item.id}>
-            {item.profile_path ? (
-              <img
-                src={`https://image.tmdb.org/t/p/w200/${item.profile_path}`}
-                alt=""
+              <CastImg
+                src= {
+                  item.profile_path
+                   ? `https://image.tmdb.org/t/p/w200/${item.profile_path}`
+                   : 'https://fakeimg.pl/200x300/032541/000?text=No%20Photo'
+                }
+                alt={`foto of ${item.name}`}
               />
-            ) : (
-              <p>No photos of {item.name}</p>
-            )}
-            <p>{item.name}</p>
+            <p><b>{item.name}</b></p>
             <p>{item.character}</p>
           </li>
         );
       })}
-    </ul>
+    </CastList>
 
   )
 }
@@ -45,3 +46,12 @@ const Cast = () => {
 export default Cast
 // <div>Cast</div>
 // cast &&  <div>Cast -!!!!</div>
+
+// {item.profile_path ? (
+//   <CastImg
+//     src={`https://image.tmdb.org/t/p/w200/${item.profile_path}`}
+//     alt={`foto of ${item.name}`}
+//   />
+// ) : (
+//   <p>No photos of {item.name}</p>
+// )}

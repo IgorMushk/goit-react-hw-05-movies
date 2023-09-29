@@ -6,6 +6,7 @@ import {
   AddInfWrapper,
   AdditionalTitle,
   MovieContainer,
+  MovieImg,
   MovieList,
   MovieSubTitle,
   MovieTitle,
@@ -76,10 +77,10 @@ const MovieDetails = () => {
           {dataMovie ? (
             <>
               <MovieContainer>
-                <img
+                <MovieImg
                   src={`https://image.tmdb.org/t/p/w300${dataMovie.poster_path}`}
                   alt={`poster of ${dataMovie.title} movie`}
-                ></img>
+                ></MovieImg>
                 <div>
                   <MovieTitle>{dataMovie.title}</MovieTitle>
                   <MovieList>
