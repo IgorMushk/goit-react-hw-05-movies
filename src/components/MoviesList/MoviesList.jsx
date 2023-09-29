@@ -1,14 +1,16 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { List, Title, } from './MoviesList.styled';
+//import { List, Title, } from './MoviesList.styled';
+import { List, } from './MoviesList.styled';
 
 const MoviesList = ({ movies }) => {
   const location = useLocation();
   //console.log(location);
+  console.log('MoviesList - movies >>>', movies);
 
   return  (
     <>
-     <Title>Trending today</Title>
+     {/* <Title>Trending today</Title> */}
      <List>
         {movies.map(movie => (
             <li key={movie.id}>

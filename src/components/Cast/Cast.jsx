@@ -12,8 +12,8 @@ const Cast = () => {
     fetchMovies(`/movie/${id}/credits`)
       .then(data => {
         setCast(data.cast);
-        console.log('(data >>', data);
-        console.log('(cast >>', cast);
+        //console.log('(data >>', data);
+        //console.log('(cast >>', cast);
       })
       .catch(err => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps

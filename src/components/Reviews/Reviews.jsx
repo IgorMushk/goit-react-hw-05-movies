@@ -11,8 +11,8 @@ const Reviews = () => {
     fetchMovies(`/movie/${id}/reviews`)
       .then(data => {
         setReviws(data.results);
-        console.log('(data >>', data);
-        console.log('(reviees >>', reviews);
+        //console.log('(data >>', data);
+        //console.log('(reviees >>', reviews);
       })
       .catch(err => console.log(err));
   // eslint-disable-next-line react-hooks/exhaustive-deps

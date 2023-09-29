@@ -47,8 +47,8 @@ const MovieDetails = () => {
     fetchMovies(`/movie/${id}`)
       .then(data => {
         setDataMovie(data);
-        console.log('(data >>', data.title);
-        console.log('(dataMovie >>', dataMovie);
+        //console.log('(data >>', data.title);
+        //console.log('(dataMovie >>', dataMovie);
       })
       .catch(err => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
