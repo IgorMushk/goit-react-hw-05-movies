@@ -1,4 +1,3 @@
-//import MoviesList from 'components/MoviesList/MoviesList';
 import MoviesList from 'components/MoviesList/MoviesList';
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -45,7 +44,6 @@ const Movies = () => {
       return;
     }
     setSearchParams({ query: inputValue });
-    //searchMovies(inputValue);
   };
 
   return (
@@ -67,9 +65,3 @@ const Movies = () => {
 };
 
 export default Movies;
-//  <div>Movies</div>
-
-//   {/* {dataMovies.length > 0
-//        ?  (<MoviesList movies={dataMovies}/>)
-//        : (<h2>Sorry we didn't find any movie</h2>)
-//     } */}

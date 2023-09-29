@@ -44,14 +44,3 @@ const Cast = () => {
 }
 
 export default Cast
-// <div>Cast</div>
-// cast &&  <div>Cast -!!!!</div>
-
-// {item.profile_path ? (
-//   <CastImg
-//     src={`https://image.tmdb.org/t/p/w200/${item.profile_path}`}
-//     alt={`foto of ${item.name}`}
-//   />
-// ) : (
-//   <p>No photos of {item.name}</p>
-// )}

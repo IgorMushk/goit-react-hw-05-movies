@@ -25,7 +25,7 @@ const Reviews = () => {
       reviews.map(item =>{
         return (
           <li key={item.id}>
-            <p><b>{item.author}></b></p>
+            <p><b>{item.author}</b></p>
             <p><i>{item.content}</i></p>
           </li>
         )
@@ -38,4 +38,3 @@ const Reviews = () => {
 }
 
 export default Reviews
-//<div>Review-{id}</div>

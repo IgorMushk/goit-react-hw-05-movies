@@ -38,8 +38,7 @@ const MovieDetails = () => {
   const { id } = useParams();
   const [dataMovie, setDataMovie] = useState(null);
   const location = useLocation();
-  //const navigate = useNavigate();
-
+  
   const backLocation = location.state?.from ?? '/movies';
   //console.log('MovieDetails >>>',location);
 
@@ -54,20 +53,9 @@ const MovieDetails = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
-  //   const handleBackClick = () => {
-  //     navigate(backLocation);
-  //   };
-
-  // console.log(dataMovie);
-  // const {title, poster_path} = dataMovie;
-  //<p>${dataMovie.title}</p>
-  //<p>${dataMovie.poster_path}</p>
-
+ 
   return (
     <>
-      {/* <button to={backLocation} onClick={handleBackClick}>
-      <span>&#60;</span> Go back
-      </button> */}
       <StyledLink to={backLocation}>
         <span>&#60;</span> Go back
       </StyledLink>
@@ -138,16 +126,3 @@ const MovieDetails = () => {
 };
 
 export default MovieDetails;
-
-// useEffect(() => {
-//     const fetchMovieDetailes = async () => {
-//       try {
-//         const data = await fetchMovies(`/movie/${id}`);
-//         setDataMovie(data);
-//         console.log('(dataMovie >>',dataMovie);
-//       } catch (err) {
-//         console.log(err);
-//       }
-//     };
-//     fetchMovieDetailes();
-//   }, [id]);
