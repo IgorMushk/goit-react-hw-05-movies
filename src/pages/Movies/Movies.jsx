@@ -3,6 +3,7 @@ import MoviesList from 'components/MoviesList/MoviesList';
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchMovies } from 'services/moviesAPI';
+import { ButtonSubmit, FormInput, FormWrapper } from './Movies.styled';
 
 const Movies = () => {
   const [inputValue, setInputValue] = useState([]);
@@ -48,24 +49,24 @@ const Movies = () => {
   };
 
   return (
-    <div>
+    <FormWrapper>
       <form>
-        <input
+        <FormInput
           type="text"
           placeholder="Search"
           value={inputValue}
           onChange={handleInputChange}
         />
-        <button type="button" onClick={handleSearchClick}>
+        <ButtonSubmit type="button" onClick={handleSearchClick}>
           Search
-        </button>
+        </ButtonSubmit>
       </form>
       {/* {dataMovies.length > 0
        ?  (<MoviesList movies={dataMovies}/>)
        : (<h2>Sorry we didn't find any movie</h2>)
     } */}
     <MoviesList movies={dataMovies}/>
-    </div>
+    </FormWrapper>
   );
 };
 
