@@ -35,7 +35,7 @@ const MovieDetails = () => {
   const { id } = useParams();
   const [dataMovie, setDataMovie] = useState(null);
   const location = useLocation();
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const backLocation = location.state?.from ?? '/movies';
   //console.log('MovieDetails >>>',location);
