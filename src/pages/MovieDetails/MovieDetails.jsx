@@ -1,7 +1,35 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams, Link } from 'react-router-dom';
 import { fetchMovies } from 'services/moviesAPI';
-import { MovieContainer, MovieList, MovieSubTitle, MovieTitle, SpanTag } from './MovieDetaile.styled';
+import {
+  MovieContainer,
+  MovieList,
+  MovieSubTitle,
+  MovieTitle,
+  SpanTag,
+} from './MovieDetaile.styled';
+import styled from 'styled-components';
+
+const StyledLink = styled(Link)`
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  color: #032541;
+  border: 1px solid #032541;
+  border-radius: 4px;
+  padding: 8px 0px;
+  transition: all 250ms linear;
+  
+
+  &:hover {
+    color: white;
+    background-color: #032541;
+  }
+`;
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -20,12 +48,12 @@ const MovieDetails = () => {
         console.log('(dataMovie >>', dataMovie);
       })
       .catch(err => console.log(err));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
-  const handleBackClick = () => {
-    navigate(backLocation);
-  };
+  //   const handleBackClick = () => {
+  //     navigate(backLocation);
+  //   };
 
   // console.log(dataMovie);
   // const {title, poster_path} = dataMovie;
@@ -34,9 +62,12 @@ const MovieDetails = () => {
 
   return (
     <>
-      <button to={backLocation} onClick={handleBackClick}>
-         Go back
-      </button>
+      {/* <button to={backLocation} onClick={handleBackClick}>
+      <span>&#60;</span> Go back
+      </button> */}
+      <StyledLink to={backLocation}>
+        <span>&#60;</span> Go back
+      </StyledLink>
 
       <div>
         <div>
@@ -61,9 +92,13 @@ const MovieDetails = () => {
                     <p> {dataMovie.overview} </p>
                   </li>
                   <li>
-                  <MovieSubTitle>Genres:</MovieSubTitle>
+                    <MovieSubTitle>Genres:</MovieSubTitle>
                   </li>
-                  <li>{dataMovie.genres.map(({name}) => ( <SpanTag key={name}> {name}  </SpanTag>)) }</li>
+                  <li>
+                    {dataMovie.genres.map(({ name }) => (
+                      <SpanTag key={name}> {name} </SpanTag>
+                    ))}
+                  </li>
                 </MovieList>
               </div>
             </MovieContainer>

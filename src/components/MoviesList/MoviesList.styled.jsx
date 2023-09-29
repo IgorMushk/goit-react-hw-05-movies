@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Title = styled.h2`
+  margin-left: 15px;
   font-size: 24px;
   font-weight: 700;
 `;
@@ -16,5 +17,3 @@ const List = styled.ul`
   }
 `;
 export { Title, List };
-
-
