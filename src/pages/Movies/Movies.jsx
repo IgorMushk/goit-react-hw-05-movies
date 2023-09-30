@@ -36,7 +36,8 @@ const Movies = () => {
     setInputValue(evt.target.value);
   };
 
-  const handleSearchClick = () => {
+  const handleSearchClick = evt => {
+    evt.preventDefault();
     //console.log('handleSearchClick >>', inputValue);
     if (!inputValue) {
       setSearchParams({});
@@ -48,14 +49,14 @@ const Movies = () => {
 
   return (
     <FormWrapper>
-      <form>
+      <form onSubmit={handleSearchClick}>
         <FormInput
           type="text"
           placeholder="Search"
           value={inputValue}
           onChange={handleInputChange}
         />
-        <ButtonSubmit type="button" onClick={handleSearchClick}>
+        <ButtonSubmit type="submit">
           Search
         </ButtonSubmit>
       </form>
